@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <signal id="signal_start2" name="signal_start2" flowable:scope="global"></signal>
+  <signal id="signal_start3" name="signal_start3" flowable:scope="global"></signal>
+  <process id="test_signal_start" name="信号启动任务" isExecutable="true">
+    <documentation>信号启动任务</documentation>
+    <extensionElements>
+      <flowable:executionListener event="start" class="test.SignalProcessStartListener"></flowable:executionListener>
+    </extensionElements>
+    <startEvent id="start_signal" name="signal_start" isInterrupting="false">
+      <extensionElements>
+        <flowable:executionListener event="start" class="test.SignalProcessStartListener"></flowable:executionListener>
+      </extensionElements>
+      <signalEventDefinition signalRef="signal_start3"></signalEventDefinition>
+    </startEvent>
+    <endEvent id="sid-23A3FCDB-0789-42B7-8F94-ED28FC03756A"></endEvent>
+    <sequenceFlow id="sid-ACF6A39B-8EFB-413B-BDE1-56A13083892C" sourceRef="start_signal" targetRef="sid-23A3FCDB-0789-42B7-8F94-ED28FC03756A"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_test_signal_start">
+    <bpmndi:BPMNPlane bpmnElement="test_signal_start" id="BPMNPlane_test_signal_start">
+      <bpmndi:BPMNShape bpmnElement="start_signal" id="BPMNShape_start_signal">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-23A3FCDB-0789-42B7-8F94-ED28FC03756A" id="BPMNShape_sid-23A3FCDB-0789-42B7-8F94-ED28FC03756A">
+        <omgdc:Bounds height="28.0" width="28.0" x="480.0" y="216.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-ACF6A39B-8EFB-413B-BDE1-56A13083892C" id="BPMNEdge_sid-ACF6A39B-8EFB-413B-BDE1-56A13083892C">
+        <omgdi:waypoint x="119.9487665347441" y="225.19214398609557"></omgdi:waypoint>
+        <omgdi:waypoint x="480.00061275871434" y="229.82006597244526"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

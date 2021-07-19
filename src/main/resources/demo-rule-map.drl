@@ -1,0 +1,17 @@
+package rules
+import test.OrderPO
+import java.util.HashMap
+
+global String key;
+global Integer returnInt;
+
+function void print(String messgae){
+    System.out.println(messgae);
+}
+
+rule "MapOne111"
+    when testMap:HashMap(testMap.get("mapInt") > 7)
+    then
+        print("" + testMap.get("mapInt"));
+        testMap.put("mapInt", 100);
+end

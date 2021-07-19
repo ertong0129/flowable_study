@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <signal id="signal" name="signal" />
+  <process id="test_boundary_signal_event" name="测试信号边界捕获事件" isExecutable="true">
+    <documentation>测试信号边界捕获事件</documentation>
+    <startEvent id="StartEvent"></startEvent>
+    <endEvent id="EndEvent"></endEvent>
+    <userTask id="UserTask"></userTask>
+    <boundaryEvent id="BoundarySignalCatchEvent" cancelActivity="true" attachedToRef="UserTask">
+      <signalEventDefinition signalRef="signal">
+      </signalEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="SequenceFlow-StartEvent-UserTask" sourceRef="StartEvent" targetRef="UserTask"></sequenceFlow>
+    <sequenceFlow id="SequenceFlow-UserTask-EndEvent" sourceRef="UserTask" targetRef="EndEvent"></sequenceFlow>
+    <sequenceFlow id="SequenceFlow-BoundarySignalCatchEvent-EndEvent" sourceRef="BoundarySignalCatchEvent" targetRef="EndEvent"></sequenceFlow>
+  </process>
+  <!--<bpmndi:BPMNDiagram id="BPMNDiagram_test_boundary_signal_event">
+    <bpmndi:BPMNPlane bpmnElement="test_boundary_signal_event" id="BPMNPlane_test_boundary_signal_event">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-896EA916-183F-4E26-90B5-7890ED2C94EA" id="BPMNShape_sid-896EA916-183F-4E26-90B5-7890ED2C94EA">
+        <omgdc:Bounds height="80.0" width="100.0" x="210.0" y="125.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-449A9A06-5DA3-4671-B774-3967A7FD603D" id="BPMNShape_sid-449A9A06-5DA3-4671-B774-3967A7FD603D">
+        <omgdc:Bounds height="28.0" width="28.0" x="435.0" y="151.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-44BBDCCA-4DD2-4537-8E2D-0D5C4C47EF23" id="BPMNShape_sid-44BBDCCA-4DD2-4537-8E2D-0D5C4C47EF23">
+        <omgdc:Bounds height="30.0" width="30.0" x="245.0" y="185.88128616816658"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-25174467-BCF9-479C-9014-994B11C7E4A8" id="BPMNEdge_sid-25174467-BCF9-479C-9014-994B11C7E4A8">
+        <omgdi:waypoint x="119.94999923927439" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="210.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-CC2901B0-97E5-45CD-88FC-3012A3AB20D1" id="BPMNEdge_sid-CC2901B0-97E5-45CD-88FC-3012A3AB20D1">
+        <omgdi:waypoint x="309.9499999999676" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="435.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-8F841AC6-8B3A-408B-9F54-69232E8DB733" id="BPMNEdge_sid-8F841AC6-8B3A-408B-9F54-69232E8DB733">
+        <omgdi:waypoint x="260.0" y="204.95"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="252.5"></omgdi:waypoint>
+        <omgdi:waypoint x="449.0" y="252.5"></omgdi:waypoint>
+        <omgdi:waypoint x="449.0" y="178.94993796113465"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>-->
+</definitions>

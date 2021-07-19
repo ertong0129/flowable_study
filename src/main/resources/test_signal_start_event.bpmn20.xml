@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <signal id="signal" name="signal"></signal>
+  <process id="test111" name="测试信号开始事件" isExecutable="true">
+    <documentation>测试信号开始事件</documentation>
+    <startEvent id="SignalStartEvent" isInterrupting="true">
+      <signalEventDefinition signalRef="signal"></signalEventDefinition>
+    </startEvent>
+    <endEvent id="EndEvent"></endEvent>
+    <sequenceFlow id="SequenceFlow-SignalStartEvent-EndEvent" sourceRef="SignalStartEvent" targetRef="EndEvent"></sequenceFlow>
+  </process>
+  <!--<bpmndi:BPMNDiagram id="BPMNDiagram_test111">
+    <bpmndi:BPMNPlane bpmnElement="test111" id="BPMNPlane_test111">
+      <bpmndi:BPMNShape bpmnElement="sid-26C12EB9-EABB-4F00-8246-89A7C154706C" id="BPMNShape_sid-26C12EB9-EABB-4F00-8246-89A7C154706C">
+        <omgdc:Bounds height="30.0" width="30.0" x="0.0" y="173.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9F4D4B5F-E6A5-45EA-A274-CE3CF1D50FD6" id="BPMNShape_sid-9F4D4B5F-E6A5-45EA-A274-CE3CF1D50FD6">
+        <omgdc:Bounds height="28.0" width="28.0" x="120.0" y="174.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-101F48A6-30E7-4CD9-9B27-A786FB77E749" id="BPMNEdge_sid-101F48A6-30E7-4CD9-9B27-A786FB77E749">
+        <omgdi:waypoint x="29.949998709639548" y="188.0"></omgdi:waypoint>
+        <omgdi:waypoint x="120.0" y="188.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>-->
+</definitions>

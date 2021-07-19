@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+    <process id="rule" name="rule" isExecutable="true">
+        <startEvent id="startEvent1" flowable:formFieldValidation="true"></startEvent>
+        <sequenceFlow id="sid-BBE78CB8-D463-4D53-8CDB-E4A9D1F63397" sourceRef="startEvent1" targetRef="sid-749435B2-2C90-483A-837D-BECA94833FF8"></sequenceFlow>
+        <sequenceFlow id="sid-05E742AB-F531-494B-B8C6-9133A1211788" sourceRef="sid-749435B2-2C90-483A-837D-BECA94833FF8"
+                      targetRef="sid-749435B2-2C90-483A-837D-BECA94833FF9"></sequenceFlow>
+        <sequenceFlow id="sid-05E742AB-F531-494B-B8C6-9133A1211789" sourceRef="sid-749435B2-2C90-483A-837D-BECA94833FF9"
+                      targetRef="holidayApprovedTask"></sequenceFlow>
+        <sequenceFlow id="sid-05E742AB-F531-494B-B8C6-9133A1211790" sourceRef="holidayApprovedTask"
+                      targetRef="sid-B9ECAC9A-9B52-4BF0-899C-8790C8273CA8"></sequenceFlow>
+        <endEvent id="sid-B9ECAC9A-9B52-4BF0-899C-8790C8273CA8"></endEvent>
+        <businessRuleTask id="sid-749435B2-2C90-483A-837D-BECA94833FF9" flowable:ruleVariablesInput="${testMap}" flowable:resultVariable="resultMap111"></businessRuleTask>
+        <businessRuleTask id="sid-749435B2-2C90-483A-837D-BECA94833FF8" flowable:ruleVariablesInput="${order},${order2}" flowable:resultVariable="resultOrder123"></businessRuleTask>
+        <userTask id="holidayApprovedTask" name="Holiday approved" flowable:assignee="${employee}"/>
+    </process>
+</definitions>

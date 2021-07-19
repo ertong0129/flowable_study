@@ -1,0 +1,16 @@
+package rules
+import test.OrderPO
+
+global String key;
+global Integer returnInt;
+
+function void print(String messgae){
+    System.out.println(messgae);
+}
+
+rule "One111"
+    when testInt:Integer(testInt > 7)
+    then
+        print("" + testInt);
+        testInt = 100;
+end

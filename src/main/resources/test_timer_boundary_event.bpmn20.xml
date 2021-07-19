@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="test_timer_boundary_event" name="测试定时边界事件" isExecutable="true">
+    <documentation>测试定时边界事件</documentation>
+    <userTask id="userTask1" flowable:candidateGroups="managers">
+      <extensionElements>
+        <flowable:executionListener event="start" class="test.BoundaryTimerEventListener"></flowable:executionListener>
+      </extensionElements>
+    </userTask>
+    <userTask id="userTask2" flowable:candidateGroups="managers">
+      <extensionElements>
+        <flowable:executionListener event="start" class="test.BoundaryTimerEventListener"></flowable:executionListener>
+      </extensionElements>
+    </userTask>
+    <startEvent id="startEvent"></startEvent>
+    <sequenceFlow id="sequenceFlow-startEvent-userTask1" sourceRef="startEvent" targetRef="userTask1"></sequenceFlow>
+    <sequenceFlow id="sequenceFlow-userTask1-endEvent1" sourceRef="userTask1" targetRef="endEvent1"></sequenceFlow>
+    <boundaryEvent id="boundaryEvent" cancelActivity="false" attachedToRef="userTask1">
+      <timerEventDefinition>
+        <!-- 边界事件1分钟后结束任务 -->
+        <!--<timeDuration>PT20S</timeDuration>-->
+        <!--<timeCycle>R3/2021-06-16T10:48:00/PT30S</timeCycle>-->
+        <timeCycle>R3/PT20S</timeCycle>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <endEvent id="endEvent1"></endEvent>
+    <sequenceFlow id="sequenceFlow-boundaryEvent-userTask2" sourceRef="boundaryEvent" targetRef="userTask2"></sequenceFlow>
+    <endEvent id="endEvent2"></endEvent>
+    <sequenceFlow id="sequenceFlow-userTask2-endEvent2" sourceRef="userTask2" targetRef="endEvent2"></sequenceFlow>
+  </process>
+</definitions>

@@ -1,0 +1,29 @@
+package rules
+import test.OrderPO
+
+global String key;
+
+function void print(String messgae){
+    System.out.println(messgae);
+}
+
+rule "One"
+     when order111:OrderPO(itemCount<=3)
+     then
+        order111.setValid(true);
+        print("one");
+end
+
+rule "Two"
+     when order111:OrderPO(itemCount>3 && itemCount <= 7)
+     then
+        order111.setValid(false);
+     	print("two");
+end
+
+rule "Three"
+    when order111:OrderPO(itemCount > 7)
+    then
+        order111.setValid(true);
+        print("three");
+end

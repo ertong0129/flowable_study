@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:flowable="http://flowable.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <!--
+        每一步都需要有一个id属性，标记当前流程的步骤，name是可选的
+        当流程开始执行的时候，执行过程会从startEvent开始，跟着sequenceFlow往下走
+
+        startEvent -> approveTask -> approved -> externalSystemCall -> holidayApprovedTask -> assign:employee -> approveEnd
+                                  -> reject -> sendRejectionMail -> rejectEnd
+      -->
+
+    <process id="holidayRequest1" name="Holiday Request" isExecutable="true">
+        <extensionElements>
+            <flowable:executionListener event="start" class="test.HolidayListener"></flowable:executionListener>
+        </extensionElements>
+        <startEvent id="startEvent">
+            <extensionElements>
+                <flowable:executionListener event="start" class="test.HolidayListener"></flowable:executionListener>
+            </extensionElements>
+        </startEvent>
+        <sequenceFlow sourceRef="startEvent" targetRef="approveTask"/>
+
+        <userTask id="approveTask" name="Approve or reject request" flowable:candidateGroups="managers">
+            <extensionElements>
+                <flowable:executionListener event="start" class="test.HolidayListener"></flowable:executionListener>
+            </extensionElements>
+        </userTask>
+        <sequenceFlow sourceRef="approveTask" targetRef="decision"/>
+
+        <exclusiveGateway id="decision"/>
+        <sequenceFlow sourceRef="decision" targetRef="approveEnd">
+            <conditionExpression xsi:type="tFormalExpression">
+                <![CDATA[
+                 ${approved}
+              ]]>
+            </conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow  sourceRef="decision" targetRef="rejectEnd">
+            <conditionExpression xsi:type="tFormalExpression">
+                <![CDATA[
+                 ${!approved}
+               ]]>
+            </conditionExpression>
+        </sequenceFlow>
+
+        <userTask id="holidayApprovedTask" name="Holiday approved" flowable:assignee="${employee}"/>
+        <sequenceFlow sourceRef="holidayApprovedTask" targetRef="approveEnd"/>
+
+        <endEvent id="approveEnd"/>
+
+        <endEvent id="rejectEnd"/>
+
+    </process>
+
+</definitions>

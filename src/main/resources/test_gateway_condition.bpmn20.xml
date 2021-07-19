@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <!--<process id="s" name="sssf" isExecutable="true">
+    <startEvent id="C0kajuRLlYJeiuVsxbSXdFnbZYkKbZ7Y" name="起始节点">
+    </startEvent>
+    <exclusiveGateway id="C0kbwWBHJwAccfSESmajrrELSMf7B125"/>
+    <endEvent id="C0kciJq30ae4KI313SrMHIkXp36mRe46" name="结束节点">
+    </endEvent>
+    <sequenceFlow id="C0kciJs956hQEycBqy3BKezo0Uh3v7PW" sourceRef="C0kbwWBHJwAccfSESmajrrELSMf7B125" targetRef="C0kciJq30ae4KI313SrMHIkXp36mRe46">
+      <conditionExpression xsi:type="tFormalExpression">
+        <![CDATA[ ${username_look==1} ]]>
+      </conditionExpression>
+    </sequenceFlow>
+    <endEvent id="C0kdzzQsAyWwJpMHRWvi6Fl4crqUmhS2" name="结束节点">
+    </endEvent>
+    <userTask id="C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al" name="用户任务" flowable:assignee="${C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al_assign}" flowable:dueDate="0">
+      <extensionElements>
+        <flowable:taskListener event="create" class="com.isyscore.flow.flowablelistener.task.UserTaskCreateListener"/>
+        <flowable:taskListener event="assignment" class="com.isyscore.flow.flowablelistener.task.TaskAssignmentTestListener"/>
+        <flowable:taskListener event="complete" class="com.isyscore.flow.flowablelistener.task.UserTaskCompleteListener"/>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler">
+          <![CDATA[ false ]]>
+        </modeler:initiator-can-complete>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false" flowable:collection="${C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al_assignList}" flowable:elementVariable="C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al_assign">
+        <completionCondition>${C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al_moreComplete==true}</completionCondition>
+      </multiInstanceLoopCharacteristics>
+    </userTask>
+    <sequenceFlow id="C0ke9f00pMINGf7nxp13Ri4BuFoBYYKV" sourceRef="C0kbwWBHJwAccfSESmajrrELSMf7B125" targetRef="C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al">
+      <conditionExpression xsi:type="tFormalExpression">
+        <![CDATA[ ${x==3} ]]>
+      </conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="C0keAfIKvYaD4esaBYTMtTOB6FUtchwa"/>
+    <sequenceFlow id="C0keBeLSLYfkaPfFAMhw4tVcVHDsM5Yw" sourceRef="C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al" targetRef="C0keAfIKvYaD4esaBYTMtTOB6FUtchwa">
+    </sequenceFlow>
+    <endEvent id="C0keD4meiuHcqIqRhQJ7ljKPNv4Kd44t" name="结束节点">
+    </endEvent>
+    <sequenceFlow id="C0keD4oKmWqSdoBlpy52Glxt0HQH1713" sourceRef="C0keAfIKvYaD4esaBYTMtTOB6FUtchwa" targetRef="C0keD4meiuHcqIqRhQJ7ljKPNv4Kd44t">
+      <conditionExpression xsi:type="tFormalExpression">
+        <![CDATA[ ${y==2} ]]>
+      </conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="C0keE7AdKCYD6w8PEbI09x8j1nAEM1i2" sourceRef="C0keAfIKvYaD4esaBYTMtTOB6FUtchwa" targetRef="C0kdzzQsAyWwJpMHRWvi6Fl4crqUmhS2">
+      <conditionExpression xsi:type="tFormalExpression">
+        <![CDATA[ ${y==4} ]]>
+      </conditionExpression>
+    </sequenceFlow>
+    <endEvent id="C0keVExkyuwvx99ChmZhGyB7WZkTpGO8" name="结束节点">
+    </endEvent>
+    <sequenceFlow id="C0keVF0H4K79c8JxcaoRNNmpV8KMVhZX" sourceRef="C0ke8ZpADwI7IsSY2R8v7C6MZEt290Al" targetRef="C0keVExkyuwvx99ChmZhGyB7WZkTpGO8">
+    </sequenceFlow>
+    <sequenceFlow id="C0kejARdkO2zuXAJz4IE2x0JZXwMINer" sourceRef="C0kajuRLlYJeiuVsxbSXdFnbZYkKbZ7Y" targetRef="C0kbwWBHJwAccfSESmajrrELSMf7B125">
+    </sequenceFlow>
+  </process>-->
+
+  <process id="test_gateway_condition" name="测试网关条件不满足" isExecutable="true">
+    <!--<extensionElements>
+      <flowable:executionListener event="start" class="test.SignalProcessStartListener"></flowable:executionListener>
+    </extensionElements>-->
+    <documentation>测试网关条件不满足</documentation>
+    <extensionElements>
+      <flowable:executionListener event="start" class="test.SignalProcessStartListener"></flowable:executionListener>
+    </extensionElements>
+    <startEvent id="StartEvent"></startEvent>
+    <endEvent id="EndEvent1"></endEvent>
+    <endEvent id="EndEvent2"></endEvent>
+    <!--default="SequenceFlow-ExclusiveGateway-EndEvent2"-->
+    <exclusiveGateway id="ExclusiveGateway"></exclusiveGateway>
+    <sequenceFlow id="SequenceFlow-StartEvent-ParallelGateway" sourceRef="StartEvent" targetRef="ExclusiveGateway"></sequenceFlow>
+    <sequenceFlow id="SequenceFlow-ExclusiveGateway-EndEvent1" sourceRef="ExclusiveGateway" targetRef="EndEvent1" >
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${x==1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow-ExclusiveGateway-EndEvent2" sourceRef="ExclusiveGateway" targetRef="EndEvent2">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${x==2}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <!--<bpmndi:BPMNDiagram id="BPMNDiagram_test_gateway_condition">
+    <bpmndi:BPMNPlane bpmnElement="test_gateway_condition" id="BPMNPlane_test_gateway_condition">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A9C338BF-F591-4A02-94A2-5F6A2F2B5061" id="BPMNShape_sid-A9C338BF-F591-4A02-94A2-5F6A2F2B5061">
+        <omgdc:Bounds height="40.0" width="40.0" x="195.0" y="145.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-3E50246F-9809-4CC1-9DC5-01370676E782" id="BPMNShape_sid-3E50246F-9809-4CC1-9DC5-01370676E782">
+        <omgdc:Bounds height="28.0" width="28.0" x="327.7272727272727" y="76.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-756194F1-4D67-462D-9845-6DCC03538871" id="BPMNShape_sid-756194F1-4D67-462D-9845-6DCC03538871">
+        <omgdc:Bounds height="28.0" width="28.0" x="338.7272727272727" y="214.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-B3FD8BF6-5F1F-4CC9-9742-36326A286532" id="BPMNEdge_sid-B3FD8BF6-5F1F-4CC9-9742-36326A286532">
+        <omgdi:waypoint x="119.94999848995758" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="195.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-96F4B16B-15EB-4846-BBC0-16D13A86E64B" id="BPMNEdge_sid-96F4B16B-15EB-4846-BBC0-16D13A86E64B">
+        <omgdi:waypoint x="227.9833596214511" y="158.0146462370437"></omgdi:waypoint>
+        <omgdi:waypoint x="329.7106314640044" y="97.16181372193053"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B1B4499A-791F-40DD-8335-3C8704393064" id="BPMNEdge_sid-B1B4499A-791F-40DD-8335-3C8704393064">
+        <omgdi:waypoint x="228.5182646376416" y="171.42996131087847"></omgdi:waypoint>
+        <omgdi:waypoint x="339.9740631315395" y="222.19580562587862"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>-->
+</definitions>
